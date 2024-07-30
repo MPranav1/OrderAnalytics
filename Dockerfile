@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY . /app
 
-COPY orders.csv /app/
+COPY apps/Dataset/orders.csv /app/
 
 RUN pip install --no-cache-dir -r requirements.txt
 
