@@ -41,14 +41,21 @@ This project performs data analysis on customer orders from an online store. The
 2. **Build the Docker image:**
 
     ```sh
-    docker-compose build
+    docker build -t my-jupy-app .
     ```
 
 3. **Run the Docker containers:**
 
     ```sh
-    docker-compose up
+    docker run -p 8888:8888 my-jupy-app
     ```
+
+4. **Run the Project:**
+
+    Now the Jupyter notebook is intiated select the valid link with vlaid ip address and paste it in the browser which will navigate you to project and now you can run the project
+
+### Project Demo
+[(https://www.youtube.com/watch?v=_5tFXJQIzi4)](https://youtu.be/LrbdK5VXsxY)
 
 ### Stopping the Containers
 
