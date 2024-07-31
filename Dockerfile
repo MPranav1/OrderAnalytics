@@ -1,16 +1,23 @@
 # Use an official Python runtime as a parent image
 FROM python:3.9-slim
 
-WORKDIR /app
+# Set the working directory in the container
+WORKDIR /usr/src/app
 
-COPY . /app
+# Copy the requirements file into the container
+COPY requirements.txt ./
 
-COPY apps/Dataset/orders.csv /app/
-
+# Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 80
+# Install Jupyter
+RUN pip install jupyter
 
-ENV NAME World
+# Copy the rest of the application code into the container
+COPY . .
 
-CMD ["python", "-m", "unittest", "discover", "-s", "tests"]
+# Expose the port Jupyter runs on
+EXPOSE 8888
+
+# Command to run Jupyter Notebook
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
